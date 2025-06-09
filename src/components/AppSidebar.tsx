@@ -32,6 +32,10 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
   SidebarGroupAction,
+  SidebarMenuBadge,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
+  SidebarMenuSubButton,
 } from "./ui/sidebar";
 import { DropdownMenuContent } from "@radix-ui/react-dropdown-menu";
 import {
@@ -79,10 +83,10 @@ const AppSidebar = () => {
                 <Link href="/">
                   <AvatarImage
                     src="https://github.com/shadcn.png"
-                    className="h-8 w-auto rounded-full"
+                    className="rounded-full h-6 w-auto"
                   />
                 </Link>
-                <span>Nifemi</span>
+                <span>Ann</span>
               </Avatar>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -102,6 +106,9 @@ const AppSidebar = () => {
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
+                  {item.title === "Inbox" && (
+                    <SidebarMenuBadge>40</SidebarMenuBadge>
+                  )}
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -150,7 +157,7 @@ const AppSidebar = () => {
                     <SidebarMenuButton asChild>
                       <Link href="#">
                         <Projector />
-                        See All Projects
+                        Contact Support
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -158,7 +165,7 @@ const AppSidebar = () => {
                     <SidebarMenuButton asChild>
                       <Link href="#">
                         <Plus />
-                        Add Project
+                        Ask Claude?
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -167,14 +174,53 @@ const AppSidebar = () => {
             </CollapsibleContent>
           </SidebarGroup>
         </Collapsible>
+
+        {/* Nested Items */}
+        <SidebarGroup>
+          <SidebarGroupLabel asChild>Nested Items</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href="#">
+                    <Projector />
+                    Contact Support
+                  </Link>
+                </SidebarMenuButton>
+                <SidebarMenuSub>
+                  <SidebarMenuSubItem>
+                    <SidebarMenuSubButton asChild>
+                      <Link href="/#">
+                        <Plus />
+                        Add Project
+                      </Link>
+                    </SidebarMenuSubButton>
+                  </SidebarMenuSubItem>
+                </SidebarMenuSub>
+
+                <SidebarMenuSub>
+                  <SidebarMenuSubItem>
+                    <SidebarMenuSubButton asChild>
+                      <Link href="/#">
+                        <Plus />
+                        Add Categories
+                      </Link>
+                    </SidebarMenuSubButton>
+                  </SidebarMenuSubItem>
+                </SidebarMenuSub>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
+
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
-                  <User2 /> Nifemi <ChevronUp className="ml-auto" />
+                  <User2 /> Ann <ChevronUp className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
