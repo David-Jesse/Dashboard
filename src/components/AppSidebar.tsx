@@ -12,7 +12,6 @@ import {
   ChevronDown,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
